@@ -9,28 +9,21 @@ class Calendar extends Component {
 
     renderCalendar() {
         const calendar = this.props.isSelect;
+        //this.props.createCalendar(calendar);
         if(calendar === 'month') {
             return <Month data={this.props.data}
-                          daysBefore={this.props.daysBefore}
-                          daysAfter={this.props.daysAfter}
                           currentDate ={this.props.currentDate}
             />
         } else if(calendar === 'week') {
             return <Week data={this.props.data}
-                         daysBefore={this.props.daysBefore}
-                         daysAfter={this.props.daysAfter}
                          currentDate ={this.props.currentDate}
             />
         } else if(calendar === 'day') {
             return <Day data={this.props.data}
-                        daysBefore={this.props.daysBefore}
-                        daysAfter={this.props.daysAfter}
                         currentDate ={this.props.currentDate}
             />
         } else if(calendar === 'list') {
             return <List data={this.props.data}
-                         daysBefore={this.props.daysBefore}
-                         daysAfter={this.props.daysAfter}
                          currentDate ={this.props.currentDate}
             />
         }

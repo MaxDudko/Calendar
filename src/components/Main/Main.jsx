@@ -22,7 +22,7 @@ class Main extends Component {
     changeSelect(select) {
         this.setState({
             isSelect: select
-        })
+        });
         this.createCalendar(null, select);
     }
 
@@ -32,9 +32,9 @@ class Main extends Component {
         let nextDate;
         let currentDate;
         let select = this.state.isSelect;
-        //let i = this.state.counter;
         let next = this.state.next;
         let prev = this.state.prev;
+
         if(change === 'prev') {
             prev++;
             next--;
@@ -88,8 +88,6 @@ class Main extends Component {
               />
               <Calendar isSelect={this.state.isSelect}
                         data={this.state.data}
-                        daysBefore={this.state.daysBefore}
-                        daysAfter={this.state.daysAfter}
                         currentDate ={this.state.currentDate}
               />
             </div>
