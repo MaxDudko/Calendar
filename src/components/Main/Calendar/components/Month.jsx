@@ -12,10 +12,8 @@ class Month extends Component {
     }
      
     renderTbody() {
-        const data = this.props.dataMonth;
+        const data = this.props.data;
         const currentDate = this.props.currentDate;
-        const daysBefore = this.props.daysBefore;
-        const daysAfter = this.props.daysAfter;
 
         const decorateStyles = (td) => {
            const decorate = styles.decorate;

@@ -6,10 +6,11 @@ import Day from './components/Day';
 import List from './components/List';
 
 class Calendar extends Component {
+
     renderCalendar() {
         const calendar = this.props.isSelect;
         if(calendar === 'month') {
-            return <Month dataMonth={this.props.dataMonth}
+            return <Month data={this.props.data}
                           daysBefore={this.props.daysBefore}
                           daysAfter={this.props.daysAfter}
                           currentDate ={this.props.currentDate}
@@ -34,6 +35,7 @@ class Calendar extends Component {
             />
         }
     }
+
     render() {
         return (
             <div className={styles.Calendar}>

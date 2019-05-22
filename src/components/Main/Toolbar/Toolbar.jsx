@@ -15,15 +15,14 @@ class Toolbar extends Component {
         }
     }
 
-
     render() {
         const select = this.props.isSelect;
         return (
             <div className={styles.Toolbar}>
                 <div className={styles.Toolbar_left}>
-                    <button onClick={() => this.props.createCalendar('prev', select)}> ◀ </button>
-                    <button onClick={() => this.props.createCalendar('next', select)}> ▶ </button>
-                    <button onClick={() => this.props.createCalendar('', select)}>today</button>
+                    <button onClick={() => this.props.createCalendar('prev')}> ◀ </button>
+                    <button onClick={() => this.props.createCalendar('next')}> ▶ </button>
+                    <button onClick={() => this.props.createCalendar('')}>today</button>
                 </div>
                 <h2>{this.renderTitle()}</h2>
                 <div className={styles.Toolbar_right}>
