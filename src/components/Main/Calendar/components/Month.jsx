@@ -12,13 +12,14 @@ class Month extends Component {
     }
      
     renderTbody() {
-        const data = this.props.data;
+        const data = this.props.dataMonth;
+        const currentDate = this.props.currentDate;
         const daysBefore = this.props.daysBefore;
         const daysAfter = this.props.daysAfter;
 
         const decorateStyles = (td) => {
            const decorate = styles.decorate;
-           if(td.select === true) return decorate;
+           if(td.monthYear === currentDate) return decorate;
         }
 
         const tdDays = data.map((td, i) => (

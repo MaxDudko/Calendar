@@ -3,32 +3,32 @@ import styles from './Week.module.scss';
 
 class Week extends Component {
     renderThead() {
-        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurthday', 'Friday', 'Saturday'];
         const thead = daysOfWeek.map((day, index) => <td key={index}>{day}</td>);
         return <tr className={styles.thead}>{thead}</tr>;
     }
 
-    renderTbody() {
-        const tdIndex = Array.from(Array(42).keys());
-        const td = tdIndex.map((td, index) => (
-            <td className={styles.td} key={index}>
-                <a href="/">{td}</a>
-            </td>
-        ));
-        const week = 7;
-        const tr = [];
-        for (let i = 0; i < Math.ceil(td.length/week); i++){
-            tr[i] = td.slice((i*week), (i*week) + week);
-        }
-        const tbody = tr.map((tr, index) => <tr key={index}>{tr}</tr>);
-        return tbody;
+    renderTable() {
+        const data = this.props.data;
+        const currentDate = this.props.currentDate;
+        const newData = data.map((el, i) => {
+
+        })
+
     }
+
+
 
     render() {
         return (
-            <div>
-              WEEK
-            </div>
+            <table className={styles.table}>
+                <thead>
+                {this.renderThead()}
+                </thead>
+                <tbody>
+                {this.renderTbody(this.props.data)}
+                </tbody>
+            </table>
         )
     }
 }
@@ -43,3 +43,7 @@ export default Week;
                   {this.renderTbody()} 
                 </tbody>
               </table>*/
+
+/*
+<tr className={styles.thead}>{thead}</tr>;
+*/

@@ -9,9 +9,10 @@ class Main extends Component {
         super(props);
         this.state = {
             isSelect: 'month',
-            data: [],
-            daysBefore: null,
-            daysAfter: null
+            dataMonth: [],
+            currentDate: null,
+            next: 0,
+            prev: 0
         }
     }
 
@@ -24,102 +25,71 @@ class Main extends Component {
             isSelect: select
         })
     }
-    
-    createCalendar() {
-        const data = [];
-        let prevDate = moment().startOf('month');
-        let nextDate = moment().endOf('month');
+    //period
+    createCalendar(change, period) {
+        const dataMonth = [];
+        let prevDate;
+        let nextDate;
+        let currentDate;
+        //let i = this.state.counter;
+        let next = this.state.next;
+        let prev = this.state.prev;
+        if(change === 'prev') {
+            prev++;
+            next--;
+            currentDate = moment().subtract(prev, period).format('MMMM YYYY');
+            prevDate = moment().subtract(prev, period).startOf('month').startOf('week');
+            nextDate = moment().subtract(prev, period).endOf('month').endOf('week');
+        } else if(change === 'next') {
+            prev--;
+            next++;
+            currentDate = moment().add(next, period).format('MMMM YYYY');
+            prevDate = moment().add(next, period).startOf('month').startOf('week');
+            nextDate = moment().add(next, period).endOf('month').endOf('week');
+        } else {
+            prev = 0;
+            next = 0;
+            currentDate = moment().format('MMMM YYYY');
+            prevDate = moment().startOf('month').startOf('week');
+            nextDate = moment().endOf('month').endOf('week');
+        }
 
         while (prevDate.isBefore(nextDate)) {
-            data.push({
+            dataMonth.push({
                 Day: prevDate.format('dddd'),
                 DayNumber: +prevDate.format('e') + 1,
                 Date: prevDate.format('DD'),
                 Month: prevDate.format('MMMM'),
+                MonthNumber: prevDate.format('MM'),
                 Year: prevDate.format('YYYY'),
-                select: true 
+                monthYear: prevDate.format('MMMM YYYY'),
             });
             prevDate.add(1, 'days');
         }
 
-        let daysBefore = data[0].DayNumber - 1;
-        let daysAfter = 7 - data[data.length - 1].DayNumber;
-
-        while (prevDate.isBefore(nextDate)) {
-            data.push({
-                Day: prevDate.format('dddd'),
-                DayNumber: +prevDate.format('e') + 1,
-                Date: prevDate.format('DD'),
-                Month: prevDate.format('MMMM'),
-                Year: prevDate.format('YYYY'),
-            });
-            prevDate.subtractd(1, 'days');
-        }
-
-        
-        for(let i = 1; i <= daysAfter; i++) {
-            data.push({
-                Day: prevDate.add(i, 'days').format('dddd'),
-                DayNumber: +prevDate.add(i, 'months').format('e') + 1,
-                Date: prevDate.add(i, 'dates').format('DD'),
-                Month: prevDate.add(1, 'months').format('MMMM'),
-            });
-        }
-
         this.setState({
-            data: data,
-            daysBefore: daysBefore,
-            daysAfter: daysAfter
+            dataMonth: dataMonth,
+            currentDate: currentDate,
+            next: next,
+            prev: prev
         })
     }
 
-    changeDate(value) {
-        const data = [];
-        let prevDate = moment().startOf('month');
-        let nextDate = moment().endOf('month');
 
-        while (prevDate.isBefore(nextDate)) {
-            data.push({
-                Day: prevDate.format('dddd'),
-                DayNumber: +prevDate.format('e') + 1,
-                Date: prevDate.format('DD'),
-                Month: prevDate.format('MMMM'),
-                Year: prevDate.format('YYYY')
-            });
-            prevDate.add(1, 'days');
-        }
-
-        let daysBefore = data[0].DayNumber - 1;
-        let daysAfter = 7 - data[data.length - 1].DayNumber;
-
-        for(let i = 0; i < daysBefore; i++) {
-            data.unshift({
-                Day: prevDate.format('dddd').add(-1, 'days'),
-                DayNumber: +prevDate.format('e') + 1,
-                Date: prevDate.format('DD').add(-1, 'dates'),
-                Month: prevDate.format('MMMM').add(-1, 'months'),
-                Year: prevDate.format('YYYY') - i
-            });
-        }
-
-        this.setState({
-            data: data,
-            daysBefore: daysBefore,
-            daysAfter: daysAfter
-        })
-
-    }
         
     render() {
         return (
             <div className={styles.Main}>
-              <Toolbar changeSelect={this.changeSelect.bind(this)}
-                       changeDate={this.changeDate.bind(this)}
+              <Toolbar isSelect={this.state.isSelect}
+                       changeSelect={this.changeSelect.bind(this)}
+                       createCalendar={this.createCalendar.bind(this)}
+                       currentDate ={this.state.currentDate}
               />
-              <Calendar isSelect={this.state.isSelect} 
-                        data={this.state.data} 
+              <Calendar isSelect={this.state.isSelect}
+                        dataMonth={this.state.dataMonth}
                         daysBefore={this.state.daysBefore}
                         daysAfter={this.state.daysAfter}
+                        currentDate ={this.state.currentDate}
               />
             </div>
         )
