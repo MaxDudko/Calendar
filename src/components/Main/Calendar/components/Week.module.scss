@@ -1,0 +1,21 @@
+.table {
+    width: 100%;
+    text-align: center;
+}
+.thead td {
+    border: 1px solid #bcc4e0;
+}
+.td {
+   width: 12vh;
+   height: 12vh;
+   border: 1px solid #bcc4e0;
+}
+.td:hover {
+    transform: scale(.99);
+}
+.td a {
+    margin-top: 0;
+    text-decoration: none;
+    color: #000000;
+
+}

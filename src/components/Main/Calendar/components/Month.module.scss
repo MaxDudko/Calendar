@@ -1,0 +1,26 @@
+.table {
+    text-align: center;
+    width: 100%;
+}
+.thead td {
+    border: 1px solid #bcc4e0;
+}
+.td {
+   width: 12vh;
+   height: 12vh;
+   border: 1px solid #bcc4e0;
+}
+.td:hover {
+    transform: scale(.99);
+    box-shadow: inset -2px 1px 5px #9191d4;
+}
+.td a {
+    margin-top: 0;
+    text-decoration: none;
+    color: #000000;
+
+}
+
+.decorate {
+    box-shadow: inset 2px -1px 5px #9191d4;
+}

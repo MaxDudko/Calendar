@@ -1,0 +1,20 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.logo {
+    animation: logo-rotate infinite 20s linear;
+    opacity: .25;
+}
+
+@keyframes logo-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
