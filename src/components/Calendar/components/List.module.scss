@@ -1,0 +1,43 @@
+.tasks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.list {
+  border: 1px solid black;
+  width: 60%;
+  padding: 4vh;
+  text-align: center;
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 40%;
+  padding: 4vh;
+}
+
+.form button {
+  margin-top: 2vh;
+}
+.task {
+
+}
+.title {
+  display: flex;
+  justify-content: space-around;
+}
+.date {
+  min-width: 20vh;
+}
+.caption {}
+.description {}
+
+li {
+  list-style-type: none;
+}
+

@@ -34,6 +34,8 @@ class Calendar extends Component {
                          currentDate ={this.props.currentDate}
                          createCalendar={this.props.createCalendar}
                          calendar={calendar}
+                         addTask={this.props.addTask}
+                         tasks={this.props.tasks}
             />
         }
     }

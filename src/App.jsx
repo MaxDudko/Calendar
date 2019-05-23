@@ -4,7 +4,6 @@ import moment from 'moment';
 import Header from './components/Header/Header'
 import Toolbar from './components/Toolbar/Toolbar';
 import Calendar from './components/Calendar/Calendar';
-import Form from './components/AddTask/Form';
 import logo from "./logo.png";
 
 class App extends Component {
@@ -13,6 +12,7 @@ class App extends Component {
         this.state = {
             isSelect: 'month',
             data: [],
+            tasks: [],
             next: 0,
             prev: 0,
             moment: moment()
@@ -91,6 +91,21 @@ class App extends Component {
         })
     }
 
+    addTask(date, caption, description) {
+        console.log('test')
+        const data = this.state.tasks;
+        const newTask = {
+            date: date,
+            caption: caption,
+            description: description
+        };
+        data.push(newTask);
+
+        this.setState({
+            tasks: data
+        })
+    }
+
 
     render() {
         console.log(this.state.moment);
@@ -112,6 +127,8 @@ class App extends Component {
                                   moment={this.state.moment}
                                   currentDate ={this.state.currentDate}
                                   createCalendar={this.createCalendar.bind(this)}
+                                  addTask={this.addTask.bind(this)}
+                                  tasks={this.state.tasks}
                         />
                     </div>
                 </div>

@@ -9,8 +9,16 @@ class Form extends Component {
 
     render() {
         return (
-            <div className={styles.list}>
-                <div className={styles.taskList}></div>
+            <div className={styles.tasks}>
+                <div className={styles.list}>
+                    <ul>
+                        <li>Task 1</li>
+                        <li>Task 2</li>
+                        <li>Task 3</li>
+                        <li>Task 4</li>
+                        <li>Task 5</li>
+                    </ul>
+                </div>
                 <form className={styles.form}>
                     <p>Enter Date: </p>
                     <input type="date" id="date" />
