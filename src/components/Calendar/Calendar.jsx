@@ -13,18 +13,27 @@ class Calendar extends Component {
         if(calendar === 'month') {
             return <Month data={this.props.data}
                           currentDate ={this.props.currentDate}
+                          createCalendar={this.props.createCalendar}
+                          calendar={calendar}
             />
         } else if(calendar === 'week') {
             return <Week data={this.props.data}
                          currentDate ={this.props.currentDate}
+                         createCalendar={this.props.createCalendar}
+                         calendar={calendar}
             />
         } else if(calendar === 'day') {
             return <Day data={this.props.data}
+                        moment={this.props.moment}
                         currentDate ={this.props.currentDate}
+                        createCalendar={this.props.createCalendar}
+                        calendar={calendar}
             />
         } else if(calendar === 'list') {
             return <List data={this.props.data}
                          currentDate ={this.props.currentDate}
+                         createCalendar={this.props.createCalendar}
+                         calendar={calendar}
             />
         }
     }

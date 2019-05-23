@@ -5,6 +5,11 @@ import moment from 'moment';
 
 class Month extends Component {
 
+    componentDidMount() {
+        const calendar = this.props.calendar;
+        this.props.createCalendar(calendar);
+    }
+
     renderThead() {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurthday', 'Friday', 'Saturday'];
         const thead = daysOfWeek.map((day, index) => <td key={index}>{day}</td>);

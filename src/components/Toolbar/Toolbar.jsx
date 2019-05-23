@@ -7,12 +7,16 @@ class Toolbar extends Component {
         if(select === 'month') {
             return this.props.currentDate;
         } else if(select === 'week') {
-            return
+            return this.props.currentDate;
         } else if(select === 'day') {
-
+            return this.props.currentDate;
         } else if(select === 'list') {
-
+            return this.props.currentDate;
         }
+    }
+    click(select) {
+        this.props.changeSelect(select);
+        this.props.createCalendar(select);
     }
 
     render() {
@@ -26,10 +30,10 @@ class Toolbar extends Component {
                 </div>
                 <h2>{this.renderTitle()}</h2>
                 <div className={styles.Toolbar_right}>
-                    <button onClick={() => this.props.changeSelect('month')}>month</button>
-                    <button onClick={() => this.props.changeSelect('week')}>week</button>
-                    <button onClick={() => this.props.changeSelect('day')}>day</button>
-                    <button onClick={() => this.props.changeSelect('list')}>list</button>
+                    <button onClick={() => this.click('month')}>month</button>
+                    <button onClick={() => this.click('week')}>week</button>
+                    <button onClick={() => this.click('day')}>day</button>
+                    <button onClick={() => this.click('list')}>list</button>
                 </div>
             </div>
         )
