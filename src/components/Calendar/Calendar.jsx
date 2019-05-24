@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import styles from './Calendar.module.scss';
-import Month from './components/Month';
-import Week from './components/Week';
-import Day from './components/Day';
-import List from './components/List';
+import Month from './Month/Month';
+import Week from './Week/Week';
+import Day from './Day/Day';
+//import List from './components/List';
 
 class Calendar extends Component {
 
     renderCalendar() {
-        const calendar = this.props.isSelect;
+        const calendar = this.props.period;
         //this.props.createCalendar(calendar);
         if(calendar === 'month') {
             return <Month data={this.props.data}
@@ -29,7 +29,7 @@ class Calendar extends Component {
                         createCalendar={this.props.createCalendar}
                         calendar={calendar}
             />
-        } else if(calendar === 'list') {
+        } /*else if(calendar === 'list') {
             return <List data={this.props.data}
                          currentDate ={this.props.currentDate}
                          createCalendar={this.props.createCalendar}
@@ -37,7 +37,7 @@ class Calendar extends Component {
                          addTask={this.props.addTask}
                          tasks={this.props.tasks}
             />
-        }
+        }*/
     }
 
     render() {

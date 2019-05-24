@@ -2,20 +2,60 @@ import React, {Component} from 'react';
 import styles from './App.module.scss';
 import moment from 'moment';
 import Header from './components/Header/Header'
-import Toolbar from './components/Toolbar/Toolbar';
 import Calendar from './components/Calendar/Calendar';
-import logo from "./logo.png";
+import Toolbar from './components/Calendar/Toolbar/Toolbar';
+import TaskList from './components/TaskList/TaskList';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSelect: 'month',
+            period: 'month',
+            page: 'calendar',
             data: [],
             tasks: [],
             next: 0,
             prev: 0,
             moment: moment()
+        }
+    }
+
+    selectPage(page) {
+        this.setState({
+            page: page
+        })
+    }
+    renderContent() {
+        const page = this.state.page;
+        if (page === "calendar") {
+            return(
+                <div>
+                  <Toolbar period={this.state.period}
+                           changeSelect={this.changeSelect.bind(this)}
+                           createCalendar={this.createCalendar.bind(this)}
+                           currentDate ={this.state.currentDate}
+                  />
+                  <Calendar period={this.state.period}
+                            data={this.state.data}
+                            moment={this.state.moment}
+                            currentDate ={this.state.currentDate}
+                            createCalendar={this.createCalendar.bind(this)}
+                            addTask={this.addTask.bind(this)}
+                            tasks={this.state.tasks}
+                  />
+                </div>
+            )
+        } else if (page === 'taskList') {
+            return(
+                <TaskList data={this.props.data}
+                          currentDate ={this.props.currentDate}
+                          createCalendar={this.props.createCalendar}
+                          calendar={this.props.period}
+                          addTask={this.props.addTask}
+                          tasks={this.props.tasks}
+                />
+                )
+
         }
     }
 
@@ -31,12 +71,12 @@ class App extends Component {
         //this.createCalendar(null, select);
     }
 
-    createCalendar(change, period) {
+    createCalendar(change) {
         const data = [];
         let prevDate;
         let nextDate;
         let currentDate;
-        let select = this.state.isSelect;
+        let select = this.state.period;
         let next = this.state.next;
         let prev = this.state.prev;
 
@@ -56,8 +96,8 @@ class App extends Component {
             prev = 0;
             next = 0;
             currentDate = moment().format('DD dddd MMMM YYYY');
-            prevDate = moment().startOf(select  || period).startOf('week');
-            nextDate = moment().endOf(select  || period).endOf('week');
+            prevDate = moment().startOf(select).startOf('week');
+            nextDate = moment().endOf(select).endOf('week');
         }
         /*
                 const hoursPerDay = 24;
@@ -91,11 +131,12 @@ class App extends Component {
         })
     }
 
-    addTask(date, caption, description) {
+    addTask(date, time, caption, description) {
         console.log('test')
         const data = this.state.tasks;
         const newTask = {
             date: date,
+            time: time,
             caption: caption,
             description: description
         };
@@ -111,18 +152,28 @@ class App extends Component {
         console.log(this.state.moment);
         return (
             <div className={styles.app}>
-                <Header />
+                <Header selectPage={this.selectPage.bind(this)} />
                 <div className={styles.container}>
+                    {this.renderContent()}
+                </div>
+            </div>
+        )
+    }
+}
+
+export default App;
+/*
+<div className={styles.container}>
                     <div className={styles.Sidebar}>
                         <img className={styles.logo} src={logo} alt="logo" />
                     </div>
                     <div className={styles.main}>
-                        <Toolbar isSelect={this.state.isSelect}
+                        <Toolbar period={this.state.period}
                                  changeSelect={this.changeSelect.bind(this)}
                                  createCalendar={this.createCalendar.bind(this)}
                                  currentDate ={this.state.currentDate}
                         />
-                        <Calendar isSelect={this.state.isSelect}
+                        <Calendar period={this.state.period}
                                   data={this.state.data}
                                   moment={this.state.moment}
                                   currentDate ={this.state.currentDate}
@@ -133,8 +184,4 @@ class App extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
-}
-
-export default App;
+*/

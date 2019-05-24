@@ -3,20 +3,20 @@ import styles from './Toolbar.module.scss';
 
 class Toolbar extends Component {
     renderTitle() {
-        let select = this.props.isSelect;
-        if(select === 'month') {
+        let period = this.props.period;
+        if(period === 'month') {
             return this.props.currentDate;
-        } else if(select === 'week') {
+        } else if(period === 'week') {
             return this.props.currentDate;
-        } else if(select === 'day') {
+        } else if(period === 'day') {
             return this.props.currentDate;
-        } else if(select === 'list') {
+        } else if(period === 'list') {
             return this.props.currentDate;
         }
     }
-    click(select) {
-        this.props.changeSelect(select);
-        this.props.createCalendar(select);
+    click(period) {
+        this.props.changeSelect(period);
+        this.props.createCalendar(period);
     }
 
     render() {
