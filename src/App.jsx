@@ -51,10 +51,10 @@ class App extends Component {
                           currentDate ={this.props.currentDate}
                           createCalendar={this.props.createCalendar}
                           calendar={this.props.period}
-                          addTask={this.props.addTask}
-                          tasks={this.props.tasks}
+                          addTask={this.addTask.bind(this)}
+                          tasks={this.state.tasks}
                 />
-                )
+             )
 
         }
     }
@@ -65,7 +65,7 @@ class App extends Component {
 
     changeSelect(select) {
         this.setState({
-            isSelect: select,
+            period: select,
             data: [],
         });
         //this.createCalendar(null, select);
@@ -83,19 +83,19 @@ class App extends Component {
         if(change === 'prev') {
             prev++;
             next--;
-            currentDate = moment().subtract(prev, select).format('DD dddd MMMM YYYY');
+            currentDate = moment().subtract(prev, select).format('MMMM YYYY');
             prevDate = moment().subtract(prev, select).startOf(select).startOf('week');
             nextDate = moment().subtract(prev, select).endOf(select).endOf('week');
         } else if(change === 'next') {
             prev--;
             next++;
-            currentDate = moment().add(next, select).format('DD dddd MMMM YYYY');
+            currentDate = moment().add(next, select).format('MMMM YYYY');
             prevDate = moment().add(next, select).startOf(select).startOf('week');
             nextDate = moment().add(next, select).endOf(select).endOf('week');
         } else {
             prev = 0;
             next = 0;
-            currentDate = moment().format('DD dddd MMMM YYYY');
+            currentDate = moment().format('MMMM YYYY');
             prevDate = moment().startOf(select).startOf('week');
             nextDate = moment().endOf(select).endOf('week');
         }
@@ -149,7 +149,6 @@ class App extends Component {
 
 
     render() {
-        console.log(this.state.moment);
         return (
             <div className={styles.app}>
                 <Header selectPage={this.selectPage.bind(this)} />

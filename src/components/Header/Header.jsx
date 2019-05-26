@@ -11,14 +11,20 @@ class Header extends Component {
             <div className={styles.header}>
                 <img className={styles.logo} src="/" alt="logo" />
                 <div className={styles.nav}>
-                    <Button name='CALENDAR'
+                    <Button name='Calendar'
                             onClick={() => this.props.selectPage('calendar')}
                     />
-                    <Button name='TASK-LIST'
+                    <Button name='Task-List'
                             onClick={() => this.props.selectPage('taskList')}
                     />
-                    <Button name='ABOUT'
+                    <Button name='Settings'
+                            onClick={() => this.props.selectPage('settings')}
+                    />
+                    <Button name='About'
                             onClick={() => this.props.selectPage('about')}
+                    />
+                    <Button name='Login'
+                            onClick={() => this.props.selectPage('login')}
                     />
                 </div>
             </div>

@@ -1,7 +1,9 @@
 .header {
+    margin-top: 0;
+    padding-top: 0;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    min-width: 100%;
     background-color: #353A40;
     box-shadow: -3px 2px 5px #353A40;
     .logo {

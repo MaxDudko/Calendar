@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from "./Day.modules.scss";
+import styles from "./Day.module.scss";
 
 class Day extends Component {
     componentDidMount() {
@@ -30,7 +30,7 @@ class Day extends Component {
 
         const tdDays = hours.map((hour, i) => (
             <tr key={i}>
-                <td className={styles.td}>{hour}</td>
+                <td className={styles.hour}>{hour}</td>
                 <td className={styles.td} />
             </tr>
         ));

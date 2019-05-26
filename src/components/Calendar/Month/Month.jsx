@@ -23,7 +23,7 @@ class Month extends Component {
         const decorateStyles = (td) => {
            const decorate = styles.decorate;
            if(td.monthYear === currentDate) return decorate;
-        }
+        };
 
         const tdDays = data.map((td, i) => (
             <td className={styles.td + ' ' + decorateStyles(td)} key={i}>

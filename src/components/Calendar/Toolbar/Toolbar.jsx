@@ -10,8 +10,6 @@ class Toolbar extends Component {
             return this.props.currentDate;
         } else if(period === 'day') {
             return this.props.currentDate;
-        } else if(period === 'list') {
-            return this.props.currentDate;
         }
     }
     click(period) {
@@ -33,7 +31,6 @@ class Toolbar extends Component {
                     <button onClick={() => this.click('month')}>month</button>
                     <button onClick={() => this.click('week')}>week</button>
                     <button onClick={() => this.click('day')}>day</button>
-                    <button onClick={() => this.click('list')}>list</button>
                 </div>
             </div>
         )

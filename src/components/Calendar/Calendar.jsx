@@ -42,7 +42,7 @@ class Calendar extends Component {
 
     render() {
         return (
-            <div className={styles.Calendar}>
+            <div className={styles.calendar}>
               {this.renderCalendar()}
             </div>
         )

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './TaskList.module.scss';
 
-class List extends Component {
+class TaskList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,12 +44,12 @@ class List extends Component {
 
     renderTask() {
         const tasks = this.props.tasks;
-        const list = tasks.map((li, i) => ([
+        const list = tasks.map((li, i) => (
            <tr className={styles.task} key={i}>
                <td className={styles.date}>{li.date} {li.time}</td>
                <td className={styles.caption}>{li.caption}</td>
            </tr>
-        ]));
+        ));
         return list;
     }
 
@@ -97,4 +97,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default TaskList;
