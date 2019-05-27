@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from './TaskList.module.scss';
+import AddTask from "./AddTask";
 
 class TaskList extends Component {
     constructor(props) {
@@ -8,8 +9,15 @@ class TaskList extends Component {
             date: null,
             time: null,
             caption: null,
-            description: null
+            description: null,
+            isShow: false
         }
+    }
+
+    showAddTask() {
+        this.setState({
+            isShow: !this.state.isShow
+        })
     }
 
     onchangeDate(event) {
@@ -40,6 +48,9 @@ class TaskList extends Component {
         const caption = this.state.caption;
         const description = this.state.description;
         this.props.addTask(date, time, caption, description);
+        this.setState({
+            isShow: !this.state.isShow
+        })
     }
 
     renderTask() {
@@ -54,9 +65,10 @@ class TaskList extends Component {
     }
 
     render() {
+        //{this.renderTask()}
         return (
-            <div className={styles.tasks}>
-                <div className={styles.list}>
+            <div className={styles.wrapper}>
+                <div className={styles.taskList}>
                     <h4>Task List</h4>
                     <table>
                         <thead>
@@ -66,32 +78,36 @@ class TaskList extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {this.renderTask()}
+                        <tr className={styles.task}>
+                            <td className={styles.date}>25.05.2019 16:20</td>
+                            <td className={styles.caption}>Task N</td>
+                        </tr>
+                        <tr className={styles.task}>
+                            <td className={styles.date}>25.05.2019 16:20</td>
+                            <td className={styles.caption}>Task N</td>
+                        </tr>
+                        <tr className={styles.task}>
+                            <td className={styles.date}>25.05.2019 16:20</td>
+                            <td className={styles.caption}>Task N</td>
+                        </tr>
+                        <tr className={styles.task}>
+                            <td className={styles.date}>25.05.2019 16:20</td>
+                            <td className={styles.caption}>Task N</td>
+                        </tr>
+                        {this.renderTask()}
                         </tbody>
                     </table>
+                    <button name='AddTask' onClick={() => this.showAddTask()}>AddTask</button>
                 </div>
-                <div className={styles.form}>
-                    <h4>Add Task</h4>
-                    <div className={styles.formTop}>
-                      <p>Enter Date: </p>
-                      <input type="date"
-                             onChange={this.onchangeDate.bind(this)}
-                      />
-                      <p>Enter Time</p>
-                      <input type="time"
-                             onChange={this.onchangeTime.bind(this)}
-                      />
-                    </div>
-                    <p>Enter Caption : </p>
-                    <input type="text"
-                           onChange={this.onchangeCaption.bind(this)}
+                {this.state.isShow ?
+                    <AddTask onchangeDate={this.onchangeDate.bind(this)}
+                             onchangeTime={this.onchangeTime.bind(this)}
+                             onchangeCaption={this.onchangeCaption.bind(this)}
+                             onchangeDescription={this.onchangeDescription.bind(this)}
+                             setValue={this.setValue.bind(this)}
+                             showAddTask={this.showAddTask.bind(this)}
                     />
-                    <p>Enter Description: </p>
-                    <textarea rows="10" cols="45"
-                              onChange={this.onchangeDescription.bind(this)}
-                    />
-                    <button onClick={() => this.setValue()}>add task</button>
-                </div>
+                    : null}
             </div>
         )
     }

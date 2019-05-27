@@ -1,0 +1,63 @@
+.show {
+  position: absolute;
+  min-width: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hidden {
+  display: none;
+}
+.addTask {
+  border: 1px solid black;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2vh;
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .close {
+      width: 4vh;
+      height: 4vh;
+    }
+    .title {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .dateBlock {
+    display: flex;
+    align-items: center;
+
+  }
+  .caption {
+    width: 100%;
+  }
+}
+.add {
+  width: 100%;
+  cursor: pointer;
+}
+.formTop {
+  display: flex;
+}
+.task {
+
+}
+
+.date {
+  min-width: 20vh;
+}
+.caption {
+  width: 100%;
+}
+.description {
+  width: 100%;
+}

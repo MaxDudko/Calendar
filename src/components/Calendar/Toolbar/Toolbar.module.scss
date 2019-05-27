@@ -2,7 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2vh;
+    background-color: #353A40;
+    min-width: 100%;
+    & h2 {
+        margin: 0;
+        padding: 0;
+        color: azure;
+    }
 }
 .Toolbar_left {
     border-radius: 10px;
@@ -16,7 +22,6 @@
 button {
     background-color: #353A40;
     border: none;
-    padding: .4em .65em;
     font-size: 1em;
     line-height: 1.5;
     color: #fff;

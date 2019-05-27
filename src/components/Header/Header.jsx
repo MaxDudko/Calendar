@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from './Header.module.scss';
+import logo from  './logo.svg';
 import Button from '../common/Button/Button'
 
 class Header extends Component {
@@ -9,23 +10,13 @@ class Header extends Component {
     render() {
         return (
             <div className={styles.header}>
-                <img className={styles.logo} src="/" alt="logo" />
+                <img className={styles.logo} src={logo} alt="logo" />
                 <div className={styles.nav}>
-                    <Button name='Calendar'
-                            onClick={() => this.props.selectPage('calendar')}
-                    />
-                    <Button name='Task-List'
-                            onClick={() => this.props.selectPage('taskList')}
-                    />
-                    <Button name='Settings'
-                            onClick={() => this.props.selectPage('settings')}
-                    />
-                    <Button name='About'
-                            onClick={() => this.props.selectPage('about')}
-                    />
-                    <Button name='Login'
-                            onClick={() => this.props.selectPage('login')}
-                    />
+                    <button onClick={() => this.props.selectPage('calendar')}>Calendar</button>
+                    <button onClick={() => this.props.selectPage('taskList')}>Task List</button>
+                    <button onClick={() => this.props.selectPage('settings')}>Settings</button>
+                    <button onClick={() => this.props.selectPage('login')}
+                    >Login</button>
                 </div>
             </div>
         )

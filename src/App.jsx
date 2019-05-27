@@ -10,13 +10,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            period: 'month',
+            isLogin: true,
             page: 'calendar',
-            data: [],
-            tasks: [],
+            period: 'month',
             next: 0,
             prev: 0,
-            moment: moment()
+            moment: moment(),
+            data: [],
+            tasks: [],
         }
     }
 
