@@ -1,0 +1,32 @@
+.header {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    background-color: #353A40;
+    box-shadow: -3px 2px 5px #353A40;
+    .logo {
+        width: 4vh;
+        height: 4vh;
+        animation: spin 2s;
+    }
+    .toolbars {
+        width: 100vh;
+    }
+    .nav {
+        margin-right: 6vh;
+    }
+}
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

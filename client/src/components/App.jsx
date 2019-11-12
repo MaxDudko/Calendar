@@ -18,6 +18,7 @@ class App extends Component {
             moment: moment(),
             data: [],
             tasks: [
+                // for example
                 {
                     date: "2019-09-07",
                     time: "15:20",

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styles from './Header.module.scss';
 import logo from  './logo.svg';
-import Button from '../common/Button/Button'
 
 class Header extends Component {
     handleClick(page) {

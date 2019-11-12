@@ -20,13 +20,7 @@ class Day extends Component {
 
     renderTable() {
         const data = this.props.data;
-        const currentDate = this.props.currentDate;
         const hours = [...Array(24).keys()].map((i) => i < 10 ? '0' + i + ':00' : i + ':00');
-
-        const decorateStyles = (td) => {
-            const decorate = styles.decorate;
-            if(td.monthYear === currentDate) return decorate;
-        };
 
         const tdDays = hours.map((hour, i) => (
             <tr key={i}>
@@ -34,7 +28,7 @@ class Day extends Component {
                     data.map((day, i) => (
                         <td className={styles.td} key={i} >
                             {this.props.tasks.map((task, i) => (
-                                day.yearMonthDay ==  task.date ?
+                                day.yearMonthDay ===  task.date ?
                                     <Task date={task.date}
                                           time={task.time}
                                           caption={task.caption}

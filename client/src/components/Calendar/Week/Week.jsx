@@ -11,7 +11,7 @@ class Week extends Component {
 
     renderThead() {
         const data = this.props.data;
-        const currentDate = this.props.currentDate;
+        // const currentDate = this.props.currentDate;
 
         const thead = data.map((day, i) => <td key={i}>{day.Day + ' ' + day.MonthNumber + '/' + day.Date}</td>);
         thead.unshift(<td />);
@@ -20,13 +20,13 @@ class Week extends Component {
 
     renderTable() {
         const data = this.props.data;
-        const currentDate = this.props.currentDate;
+        // const currentDate = this.props.currentDate;
         const hours = [...Array(24).keys()].map((i) => i < 10 ? '0' + i + ':00' : i + ':00');
 
-        const decorateStyles = (td) => {
-            const decorate = styles.decorate;
-            if(td.monthYear === currentDate) return decorate;
-        };
+        // const decorateStyles = (td) => {
+        //     const decorate = styles.decorate;
+        //     if(td.monthYear === currentDate) return decorate;
+        // };
 
         const tdDays = hours.map((hour, i) => (
             <tr key={i}>
@@ -36,7 +36,7 @@ class Week extends Component {
                         <td className={styles.td} key={i} >
                             {
                                 this.props.tasks.map((task, i) => (
-                                day.yearMonthDay ==  task.date && hour ==  task.time ?
+                                day.yearMonthDay ===  task.date && hour ===  task.time ?
                                     <Task date={task.date}
                                           time={task.time}
                                           caption={task.caption}

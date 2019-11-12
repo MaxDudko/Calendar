@@ -38,7 +38,7 @@ class Month extends Component {
                 <a href="/">{td.Date}</a>
                 {
                     this.props.tasks.map((task, i) => (
-                    td.yearMonthDay ==  task.date ?
+                    td.yearMonthDay ===  task.date ?
                         <Task date={task.date}
                               time={task.time}
                               caption={task.caption}

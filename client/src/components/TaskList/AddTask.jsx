@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styles from './AddTask.module.scss';
-import Button from '../common/Button/Button'
 
 class AddTask extends Component {
 

@@ -18,7 +18,6 @@ class Toolbar extends Component {
     }
 
     render() {
-        const select = this.props.isSelect;
         return (
             <div className={styles.Toolbar}>
                 <div className={styles.Toolbar_left}>
